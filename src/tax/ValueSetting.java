@@ -1,3 +1,4 @@
+package tax;
 
 public class ValueSetting {
 	
@@ -18,9 +19,11 @@ public class ValueSetting {
 	public static final Double standardRate2017_18 = 0.15;
 	public static final Double[] taxRate2017_18 = {0.02, 0.07, 0.12, 0.17};
 
-	public static final Double taxGap2018_19 = 45000.0;
+	public static final Double taxGap2018_19 = 50000.0;
 	public static final Double standardRate2018_19 = 0.15;
 	public static final Double[] taxRate2018_19 = {0.02, 0.06, 0.10, 0.14, 0.17};
-
+	
+	public static final String inFolderPath = "src/tax/in/";
+	public static final String outFolderPath = "src/tax/out/";
 
 }

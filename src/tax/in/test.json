@@ -1,0 +1,104 @@
+[
+    {
+        "id": "1",
+        "husband_income": "50000.0",
+        "wife_income": "0.0",
+        "assessment_year" : "Y2018_19"
+    },
+    {
+        "id": "2",
+        "husband_income": "0.0",
+        "wife_income": "0.0",
+        "assessment_year" : "Y2018_19"
+    },
+    {
+        "id": "3",
+        "husband_income": "100000.0",
+        "wife_income": "50000.0",
+        "assessment_year" : "Y2018_19"
+    },
+    {
+        "id": "4",
+        "husband_income": "150000.0",
+        "wife_income": "100000.0",
+        "assessment_year" : "Y2018_19"
+    },
+    {
+        "id": "5",
+        "husband_income": "200000.0",
+        "wife_income": "150000.0",
+        "assessment_year" : "Y2018_19"
+    },
+    {
+        "id": "6",
+        "husband_income": "300000.0",
+        "wife_income": "150000.0",
+        "assessment_year" : "Y2018_19"
+    },
+    {
+        "id": "7",
+        "husband_income": "2200000.0",
+        "wife_income": "300000.0",
+        "assessment_year" : "Y2018_19"
+    },
+    {
+        "id": "8",
+        "husband_income": "2300000.0",
+        "wife_income": "85000.0",
+        "assessment_year" : "Y2018_19"
+    },
+    {
+        "id": "9",
+        "husband_income": "205000.0",
+        "wife_income": "205000.0",
+        "assessment_year" : "Y2018_19"
+    },
+    {
+        "id": "10",
+        "husband_income": "190000.0",
+        "wife_income": "104000.0",
+        "assessment_year" : "Y2018_19"
+    },
+    {
+        "id": "11",
+        "husband_income": "3140000.0",
+        "wife_income": "2000.0",
+        "assessment_year" : "Y2018_19"
+    },
+    {
+        "id": "12",
+        "husband_income": "4000000.0",
+        "wife_income": "1000000.0",
+        "assessment_year" : "Y2018_19"
+    },
+    {
+        "id": "13",
+        "husband_income": "250000.0",
+        "wife_income": "1000000.0",
+        "assessment_year" : "Y2018_19"
+    },
+    {
+        "id": "14",
+        "husband_income": "75000.0",
+        "wife_income": "75000.0",
+        "assessment_year" : "Y2018_19"
+    },
+    {
+        "id": "15",
+        "husband_income": "75000.0",
+        "wife_income": "25000.0",
+        "assessment_year" : "Y2018_19"
+    },
+    {
+        "id": "16",
+        "husband_income": "105000.0",
+        "wife_income": "145000.0",
+        "assessment_year" : "Y2018_19"
+    },
+    {
+        "id": "17",
+        "husband_income": "78000.0",
+        "wife_income": "300000.0",
+        "assessment_year" : "Y2018_19"
+    }
+]

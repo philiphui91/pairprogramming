@@ -1,10 +1,12 @@
+package tax;
 import java.math.RoundingMode;
 import java.text.NumberFormat;
 import java.util.HashMap;
 import java.util.Map;
 
-
 public class TaxMaster {
+	
+	private String id;
 	
 	private YearOfAssessment year;
 	
@@ -18,6 +20,16 @@ public class TaxMaster {
 	
 	private Map<YearOfAssessment, Double> MPFMinIncome = new HashMap<YearOfAssessment, Double>();
 	
+	private String recommendation;
+	
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
 	public YearOfAssessment getYear() {
 		return year;
 	}
@@ -67,6 +79,15 @@ public class TaxMaster {
 		MPFMinIncome = _MPFMinIncome;
 	}
 	
+	
+	public String getRecommendation() {
+		return recommendation;
+	}
+
+	public void setRecommendation(String recommendation) {
+		this.recommendation = recommendation;
+	}
+
 	public String RoundDouble(Double d, int rounding) {
 		if (d == null) 
 			d = 0.0; 

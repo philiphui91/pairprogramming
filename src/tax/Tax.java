@@ -1,12 +1,13 @@
+package tax;
 import java.util.HashMap;
 import java.util.Map;
 
 
 public class Tax extends TaxMaster {
 
-	TaxDao taxSeparateHusband = new TaxDao();
-	TaxDao taxSeparateWife = new TaxDao();
-	TaxDao taxJoint = new TaxDao();
+	private TaxDao taxSeparateHusband;
+	private TaxDao taxSeparateWife;
+	private TaxDao taxJoint;
 	
 	public Tax() {
 		Map<YearOfAssessment, Double> _MPFMaxDeduction = new HashMap<YearOfAssessment, Double>();
@@ -29,5 +30,30 @@ public class Tax extends TaxMaster {
 		_MPFMinIncome.put(YearOfAssessment.Y2018_19, 7100.0);
 		super.setMPFMinIncome(_MPFMinIncome);
 	}
+
+	public TaxDao getTaxSeparateHusband() {
+		return taxSeparateHusband;
+	}
+
+	public void setTaxSeparateHusband(TaxDao taxSeparateHusband) {
+		this.taxSeparateHusband = taxSeparateHusband;
+	}
+
+	public TaxDao getTaxSeparateWife() {
+		return taxSeparateWife;
+	}
+
+	public void setTaxSeparateWife(TaxDao taxSeparateWife) {
+		this.taxSeparateWife = taxSeparateWife;
+	}
+
+	public TaxDao getTaxJoint() {
+		return taxJoint;
+	}
+
+	public void setTaxJoint(TaxDao taxJoint) {
+		this.taxJoint = taxJoint;
+	}
+
 	
 }
