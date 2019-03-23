@@ -8,6 +8,9 @@ import org.json.JSONObject;
 import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 
+import tax.setting.ValueSetting;
+import tax.setting.YearOfAssessment;
+
 public class InOutJSonFile {
 
 	public InOutJSonFile(String inputFileName) {

@@ -2,6 +2,9 @@ package tax;
 
 import java.util.Map;
 
+import tax.setting.ValueSetting;
+import tax.setting.YearOfAssessment;
+
 public class TaxDao {
 	
 	private Double income;
@@ -12,7 +15,7 @@ public class TaxDao {
 	
 	private Double taxStandardRate;
 	
-	private Double taxProgessRate;
+	private Double taxProgressRate;
 	
 	private Double taxPayable;
 	
@@ -53,12 +56,12 @@ public class TaxDao {
 		this.taxStandardRate = taxStandardRate;
 	}
 
-	public Double getTaxProgessRate() {
-		return taxProgessRate;
+	public Double getTaxProgressRate() {
+		return taxProgressRate;
 	}
 
-	public void setTaxProgessRate(Double taxProgessRate) {
-		this.taxProgessRate = taxProgessRate;
+	public void setTaxProgessRate(Double taxProgressRate) {
+		this.taxProgressRate = taxProgressRate;
 	}
 
 	public Double getTaxPayable() {
@@ -103,7 +106,7 @@ public class TaxDao {
 		return netIncome;
 	}
 	
-	public Double calProgessRateTax(Double taxGap, Double[] taxRate) {
+	public Double calProgressiveRateTax(Double taxGap, Double[] taxRate) {
 		Double n = calNetChargeableIncome(); //netChargeableIncome
 		Double tax = 0.0;
 		
@@ -130,9 +133,9 @@ public class TaxDao {
 	}
 	
 	public Double calTaxPayable() {
-		if (taxStandardRate > taxProgessRate) {
-			setTaxPayable(taxProgessRate);
-			return taxProgessRate;
+		if (taxStandardRate > taxProgressRate) {
+			setTaxPayable(taxProgressRate);
+			return taxProgressRate;
 		} else {
 			setTaxPayable(taxStandardRate);
 			return taxStandardRate;

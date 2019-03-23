@@ -1,5 +1,7 @@
 package tax;
 
+import tax.setting.ValueSetting;
+import tax.setting.YearOfAssessment;
 
 public class TaxUtil{
 
@@ -13,31 +15,32 @@ public class TaxUtil{
 		taxMaster.setTaxSeparateWife(new TaxDao());
 		taxMaster.setTaxJoint(new TaxDao());
 		
+		//dirty code
 		switch (_YOA) {
 			case Y2012_13:
 			case Y2013_14:
 			case Y2014_15:
 			case Y2015_16:
 			case Y2016_17:
-				taxMaster.setTaxGap(ValueSetting.taxGap2012_16);
-				taxMaster.setTaxRate(ValueSetting.taxRate2012_16);
-				taxMaster.setStandardRate(ValueSetting.standardRate2012_16);
+				taxMaster.setTaxGap(40000.0);
+				taxMaster.setTaxRate(new Double[]{0.02, 0.07, 0.12, 0.17});
+				taxMaster.setStandardRate(0.15);
 			break;
 			case Y2017_18:
-				taxMaster.setTaxGap(ValueSetting.taxGap2017_18);
-				taxMaster.setTaxRate(ValueSetting.taxRate2017_18);
-				taxMaster.setStandardRate(ValueSetting.standardRate2017_18);
+				taxMaster.setTaxGap(45000.0);
+				taxMaster.setTaxRate(new Double[]{0.02, 0.07, 0.12, 0.17});
+				taxMaster.setStandardRate(0.15);
 			break;
 			case Y2018_19:
-				taxMaster.setTaxGap(ValueSetting.taxGap2018_19);
-				taxMaster.setTaxRate(ValueSetting.taxRate2018_19);
-				taxMaster.setStandardRate(ValueSetting.standardRate2018_19);
+				taxMaster.setTaxGap(50000.0);
+				taxMaster.setTaxRate(new Double[]{0.02, 0.06, 0.10, 0.14, 0.17});
+				taxMaster.setStandardRate(0.15);
 			break;
 			default: 
-				taxMaster.setYear(ValueSetting.dafaultYear);
-				taxMaster.setTaxGap(ValueSetting.defaultTaxGap);
-				taxMaster.setTaxRate(ValueSetting.defaultTaxRate);
-				taxMaster.setStandardRate(ValueSetting.defaultStandardRate);
+				taxMaster.setYear(YearOfAssessment.Y2017_18);
+				taxMaster.setTaxGap(45000.0);
+				taxMaster.setTaxRate(new Double[]{0.02, 0.07, 0.12, 0.17});
+				taxMaster.setStandardRate(0.15);
 			break;
 		}
 		
@@ -91,11 +94,11 @@ public class TaxUtil{
 		output = taxMaster.getTaxJoint().calNetIncome();
 		System.out.println("Net Income: " + output);
 		
-		Double taxProgessRate = taxMaster.getTaxJoint().calProgessRateTax(taxMaster.getTaxGap(), taxMaster.getTaxRate());
+		Double taxProgressRate = taxMaster.getTaxJoint().calProgressiveRateTax(taxMaster.getTaxGap(), taxMaster.getTaxRate());
 		Double taxStandardRate = taxMaster.getTaxJoint().calStandardRateTax(taxMaster.getStandardRate(), true);
-		taxMaster.getTaxJoint().setTaxProgessRate(taxProgessRate);
+		taxMaster.getTaxJoint().setTaxProgessRate(taxProgressRate);
 		taxMaster.getTaxJoint().setTaxStandardRate(taxStandardRate);
-		System.out.println("Progress Rate: " + taxMaster.RoundDouble(taxProgessRate,1));
+		System.out.println("Progress Rate: " + taxMaster.RoundDouble(taxProgressRate,1));
 		System.out.println("Standard Rate: " + taxMaster.RoundDouble(taxStandardRate,1));
 	}
 	
@@ -117,11 +120,11 @@ public class TaxUtil{
 		output = taxMaster.getTaxSeparateHusband().calNetIncome();
 		System.out.println("Net Income: " + output);
 		
-		Double taxProgessRate = taxMaster.getTaxSeparateHusband().calProgessRateTax(taxMaster.getTaxGap(), taxMaster.getTaxRate());
+		Double taxProgressRate = taxMaster.getTaxSeparateHusband().calProgressiveRateTax(taxMaster.getTaxGap(), taxMaster.getTaxRate());
 		Double taxStandardRate = taxMaster.getTaxSeparateHusband().calStandardRateTax(taxMaster.getStandardRate(), false);
-		taxMaster.getTaxSeparateHusband().setTaxProgessRate(taxProgessRate);
+		taxMaster.getTaxSeparateHusband().setTaxProgessRate(taxProgressRate);
 		taxMaster.getTaxSeparateHusband().setTaxStandardRate(taxStandardRate);
-		System.out.println("Progress Rate: " + taxMaster.RoundDouble(taxProgessRate,1));
+		System.out.println("Progress Rate: " + taxMaster.RoundDouble(taxProgressRate,1));
 		System.out.println("Standard Rate: " + taxMaster.RoundDouble(taxStandardRate, 1));
 	}
 	
@@ -134,11 +137,11 @@ public class TaxUtil{
 		output = taxMaster.getTaxSeparateWife().calNetIncome();
 		System.out.println("Net Income: " + output);
 		
-		Double taxProgessRate = taxMaster.getTaxSeparateWife().calProgessRateTax(taxMaster.getTaxGap(), taxMaster.getTaxRate());
+		Double taxProgressRate = taxMaster.getTaxSeparateWife().calProgressiveRateTax(taxMaster.getTaxGap(), taxMaster.getTaxRate());
 		Double taxStandardRate = taxMaster.getTaxSeparateWife().calStandardRateTax(taxMaster.getStandardRate(), false);
-		taxMaster.getTaxSeparateWife().setTaxProgessRate(taxProgessRate);
+		taxMaster.getTaxSeparateWife().setTaxProgessRate(taxProgressRate);
 		taxMaster.getTaxSeparateWife().setTaxStandardRate(taxStandardRate);
-		System.out.println("Progress Rate: " + taxMaster.RoundDouble(taxProgessRate ,1));
+		System.out.println("Progress Rate: " + taxMaster.RoundDouble(taxProgressRate ,1));
 		System.out.println("Standard Rate: " + taxMaster.RoundDouble(taxStandardRate, 1));
 			}
 	

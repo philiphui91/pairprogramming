@@ -9,8 +9,8 @@ import org.junit.Test;
 
 import tax.InOutJSonFile;
 import tax.TaxUtil;
-import tax.ValueSetting;
-import tax.YearOfAssessment;
+import tax.setting.ValueSetting;
+import tax.setting.YearOfAssessment;
 
 //@RunWith(Parameterized.class)
 //@Category(TaxCalculate.class)
