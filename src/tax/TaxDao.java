@@ -2,7 +2,6 @@ package tax;
 
 import java.util.Map;
 
-import tax.setting.ValueSetting;
 import tax.setting.YearOfAssessment;
 
 public class TaxDao {
@@ -123,13 +122,9 @@ public class TaxDao {
 		return tax;
 	}
 		
-	public Double calStandardRateTax(Double standardRate, boolean jointTax) {
-		Double n = calNetChargeableIncome(); //netChargeableIncome
-		if (jointTax) {
-			return (n + (ValueSetting.DeductionOfSeparateTax * 2)) * standardRate;
-		} else {
-			return (n + ValueSetting.DeductionOfSeparateTax) * standardRate;
-		}
+	public Double calStandardRateTax(Double standardRate) {
+		Double n = calNetIncome();
+		return n * standardRate;
 	}
 	
 	public Double calTaxPayable() {

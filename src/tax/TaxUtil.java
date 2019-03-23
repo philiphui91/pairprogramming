@@ -1,6 +1,5 @@
 package tax;
 
-import tax.setting.ValueSetting;
 import tax.setting.YearOfAssessment;
 
 public class TaxUtil{
@@ -44,11 +43,31 @@ public class TaxUtil{
 			break;
 		}
 		
+		switch (_YOA) {
+			case Y2012_13:
+			case Y2013_14:
+			case Y2014_15:
+			case Y2015_16:
+				taxMaster.setBasicAllowance(120000.0);
+				taxMaster.setMarriedAllowance(240000.0);
+			break;
+			case Y2016_17:
+			case Y2017_18:
+			case Y2018_19:
+				taxMaster.setBasicAllowance(132000.0);
+				taxMaster.setMarriedAllowance(264000.0);
+			break;
+			default: 
+				taxMaster.setBasicAllowance(0.0);
+				taxMaster.setMarriedAllowance(0.0);
+			break;
+		}
+		
 		// Case 1
 //		System.out.println("Case 1 Start");
 		// MPF Calculation need to split up
 		Double jointMpf = 0.0;
-		taxMaster.getTaxJoint().setDeduction(ValueSetting.DeductionOfJointTax);
+		taxMaster.getTaxJoint().setAllowances(taxMaster.getMarriedAllowance());
 		taxMaster.getTaxJoint().setIncome(_husbandSalary);
 		jointMpf += taxMaster.getTaxJoint().calMPFDeduction(taxMaster.getMPFMaxDeduction(), taxMaster.getYear());
 		taxMaster.getTaxJoint().setIncome(_wifeSalary);
@@ -62,10 +81,10 @@ public class TaxUtil{
 		// Case 2
 //		System.out.println("Case 2 Start");
 		taxMaster.getTaxSeparateHusband().setIncome(_husbandSalary);
-		taxMaster.getTaxSeparateHusband().setDeduction(ValueSetting.DeductionOfSeparateTax);
+		taxMaster.getTaxSeparateHusband().setAllowances(taxMaster.getBasicAllowance());
 		taxMaster.getTaxSeparateHusband().calMPFDeduction(taxMaster.getMPFMaxDeduction(), taxMaster.getYear());
 		taxMaster.getTaxSeparateWife().setIncome(_wifeSalary);
-		taxMaster.getTaxSeparateWife().setDeduction(ValueSetting.DeductionOfSeparateTax);
+		taxMaster.getTaxSeparateWife().setAllowances(taxMaster.getBasicAllowance());
 		taxMaster.getTaxSeparateWife().calMPFDeduction(taxMaster.getMPFMaxDeduction(), taxMaster.getYear());
 //		System.out.println("Case 2 End");
 		
@@ -95,7 +114,7 @@ public class TaxUtil{
 		System.out.println("Net Income: " + output);
 		
 		Double taxProgressRate = taxMaster.getTaxJoint().calProgressiveRateTax(taxMaster.getTaxGap(), taxMaster.getTaxRate());
-		Double taxStandardRate = taxMaster.getTaxJoint().calStandardRateTax(taxMaster.getStandardRate(), true);
+		Double taxStandardRate = taxMaster.getTaxJoint().calStandardRateTax(taxMaster.getStandardRate());
 		taxMaster.getTaxJoint().setTaxProgessRate(taxProgressRate);
 		taxMaster.getTaxJoint().setTaxStandardRate(taxStandardRate);
 		System.out.println("Progress Rate: " + taxMaster.RoundDouble(taxProgressRate,1));
@@ -121,7 +140,7 @@ public class TaxUtil{
 		System.out.println("Net Income: " + output);
 		
 		Double taxProgressRate = taxMaster.getTaxSeparateHusband().calProgressiveRateTax(taxMaster.getTaxGap(), taxMaster.getTaxRate());
-		Double taxStandardRate = taxMaster.getTaxSeparateHusband().calStandardRateTax(taxMaster.getStandardRate(), false);
+		Double taxStandardRate = taxMaster.getTaxSeparateHusband().calStandardRateTax(taxMaster.getStandardRate());
 		taxMaster.getTaxSeparateHusband().setTaxProgessRate(taxProgressRate);
 		taxMaster.getTaxSeparateHusband().setTaxStandardRate(taxStandardRate);
 		System.out.println("Progress Rate: " + taxMaster.RoundDouble(taxProgressRate,1));
@@ -138,7 +157,7 @@ public class TaxUtil{
 		System.out.println("Net Income: " + output);
 		
 		Double taxProgressRate = taxMaster.getTaxSeparateWife().calProgressiveRateTax(taxMaster.getTaxGap(), taxMaster.getTaxRate());
-		Double taxStandardRate = taxMaster.getTaxSeparateWife().calStandardRateTax(taxMaster.getStandardRate(), false);
+		Double taxStandardRate = taxMaster.getTaxSeparateWife().calStandardRateTax(taxMaster.getStandardRate());
 		taxMaster.getTaxSeparateWife().setTaxProgessRate(taxProgressRate);
 		taxMaster.getTaxSeparateWife().setTaxStandardRate(taxStandardRate);
 		System.out.println("Progress Rate: " + taxMaster.RoundDouble(taxProgressRate ,1));

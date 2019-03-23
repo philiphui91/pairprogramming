@@ -7,7 +7,7 @@ import tax.test.TestMethod;
 public interface Readme {
 
 	/* 
-	 * Common Value such as ID, Tax Period (YearOfAssessment), Tax Gap, Tax Rate, Standard Rate, MPF MaxDeduction, MPF MinIncome, Recommendation 
+	 * Common Value such as ID, Tax Period (YearOfAssessment), Tax Gap, Tax Rate, Standard Rate, MPF MaxDeduction, MPF MinIncome, Allowances, Recommendation 
 	 */
 	TaxMaster taxMaster = new TaxMaster();
 	
@@ -18,7 +18,7 @@ public interface Readme {
 	Tax tax = new Tax();
 	
 	/*
-	 * Value of Tax Income, Deduction, Allowances, Tax StandardRate, Tax ProgressiveRate, Tax Payable, MPF Deduction
+	 * Value of Tax Income, Deduction, Tax StandardRate, Tax ProgressiveRate, Tax Payable, MPF Deduction
 	 * Calculate Net Chargeable Income(NCI), Net Income, Progress Rate Tax, Standard Rate Tax, Tax Payable, MPF Deduction
 	 * ** MPF MIN deduction hard coded 7100 * 12 in Tax DAO
 	 */
@@ -67,8 +67,8 @@ public interface Readme {
 	
 	/*
 	 * Hard coded value:
-	 * DeductionOfJointTax (264,000), DeductionOfSeparateTax (132,000)  
-	 * In Folder Path (JSonFile), Out Folder Path (JSonFile)
+	 * Allowances
+	 * In Folder Path, Out Folder Path
 	 * 
 	 * Tax Gap, Tax Progressive Rate, Tax Standard Rate setting in TaxUtil.java
 	 * 75 percent Deduction and max Deduction in CreateJSONFile.java  

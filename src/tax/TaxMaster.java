@@ -22,6 +22,10 @@ public class TaxMaster {
 	
 	private Map<YearOfAssessment, Double> MPFMinIncome = new HashMap<YearOfAssessment, Double>();
 	
+	private Double basicAllowance;
+	
+	private Double marriedAllowance;
+	
 	private String recommendation;
 	
 	public String getId() {
@@ -82,6 +86,22 @@ public class TaxMaster {
 	}
 	
 	
+	public Double getBasicAllowance() {
+		return basicAllowance;
+	}
+
+	public void setBasicAllowance(Double basicAllowance) {
+		this.basicAllowance = basicAllowance;
+	}
+
+	public Double getMarriedAllowance() {
+		return marriedAllowance;
+	}
+
+	public void setMarriedAllowance(Double marriedAllowance) {
+		this.marriedAllowance = marriedAllowance;
+	}
+
 	public String getRecommendation() {
 		return recommendation;
 	}
