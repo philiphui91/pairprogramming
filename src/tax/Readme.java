@@ -59,8 +59,8 @@ public interface Readme {
 	 * 5. Joint Tax Payable
 	 * 6. Separate Husband Tax Payable
 	 * 7. Separate Wife Tax Payable
-	 * 8. Separate Husband Tax Payable after 75% deduction (Hard coded max Deduction here)
-	 * 9. Separate Wife Tax Payable after 75% deduction (Hard coded max Deduction here)
+	 * 8. Separate Husband Tax Payable after 75% tax deduction (Hard coded max Deduction here)
+	 * 9. Separate Wife Tax Payable after 75% tax deduction (Hard coded max Deduction here)
 	 * 10. Recommendation (Recommend using Joint Tax of not)
 	 */
 	CreateJSONFile createJSONFile = null;

@@ -21,8 +21,6 @@ public class TestMethod {
 //		
 //	}
 //	
-//	//TODO: Tax Reduction 75%, allowance
-//	
 //	@Test
 //	public void test() {
 //		System.out.println(new SimpleDateFormat("'myJSON_'yyyyMMddHHmm'.json'").format(new Date()));

@@ -36,10 +36,9 @@ public class CreateJSONFile {
 				obj.put("5_joint_tax_payable", _tax.RoundDouble(_tax.getTaxJoint().calTaxPayable(), 0));
 				obj.put("6_separate_husband_tax_payable", _tax.RoundDouble(_tax.getTaxSeparateHusband().calTaxPayable(), 0));
 				obj.put("7_separate_wife_tax_payable", _tax.RoundDouble(_tax.getTaxSeparateWife().calTaxPayable(), 0));
-				obj.put("8_sep_husband_75%_tax_payable", _tax.RoundDouble(Deduction75percent(_tax.getTaxSeparateHusband().calTaxPayable(), _tax.getYear()), 0));
-				obj.put("9_sep_wife_75%_tax_payable", _tax.RoundDouble(Deduction75percent(_tax.getTaxSeparateWife().calTaxPayable(), _tax.getYear()), 0));
+				obj.put("8_sep_husband_75percent_tax_payable", _tax.RoundDouble(Deduction75percent(_tax.getTaxSeparateHusband().calTaxPayable(), _tax.getYear()), 0));
+				obj.put("9_sep_wife_75percent_tax_payable", _tax.RoundDouble(Deduction75percent(_tax.getTaxSeparateWife().calTaxPayable(), _tax.getYear()), 0));
 				obj.put("10_recommendation", _tax.getRecommendation());
-				
 				file.write(obj.toString());
 			}
 			file.write("]");
