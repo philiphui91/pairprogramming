@@ -48,7 +48,7 @@ public class InOutJSonFile {
 				taxList.add(taxUtil.returnObj());
 			}
 			
-			new CreateJSONFile(taxList);
+			new CreateJSONFile(taxList, inputFileName);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

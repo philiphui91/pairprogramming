@@ -94,84 +94,103 @@ public class TaxUtil{
 	}
 	
 	public void printAll() {
-		System.out.println("ID: " + taxMaster.getId() + " ----- Joint Tax -----");
+		System.out.println("Running case: " + taxMaster.getId());
+//		System.out.println("ID: " + taxMaster.getId() + " ----- Joint Tax -----");
 		printJointTax();
-		System.out.println("ID: " + taxMaster.getId() + " ----- Separate Husband Tax -----");
+//		System.out.println("ID: " + taxMaster.getId() + " ----- Separate Husband Tax -----");
 		printSeparateHusbandTax();
-		System.out.println("ID: " + taxMaster.getId() + " ----- Separate Wife Tax -----");
+//		System.out.println("ID: " + taxMaster.getId() + " ----- Separate Wife Tax -----");
 		printSeparateWifeTax();
-		System.out.println("ID: " + taxMaster.getId() + " ----- Recommendation -----");
+//		System.out.println("ID: " + taxMaster.getId() + " ----- Recommendation -----");
 		printRecommendation();
+		System.out.println("Case end: " + taxMaster.getId());
 	}
 	
 	public void printJointTax() {
-		System.out.println("Allowances: " + taxMaster.getTaxJoint().getAllowances());
-		System.out.println("Deduction: " + taxMaster.getTaxJoint().getDeduction());
-		System.out.println("TotalIncome: " + taxMaster.getTaxJoint().getIncome());
-		Double output = taxMaster.getTaxJoint().calNetChargeableIncome();
-		System.out.println("Net Chargeable Income: " + output);
-		output = taxMaster.getTaxJoint().calNetIncome();
-		System.out.println("Net Income: " + output);
+//		System.out.println("Allowances: " + taxMaster.getTaxJoint().getAllowances());
+//		System.out.println("Deduction: " + taxMaster.getTaxJoint().getDeduction());
+//		System.out.println("TotalIncome: " + taxMaster.getTaxJoint().getIncome());
+		taxMaster.getTaxJoint().getAllowances();
+		taxMaster.getTaxJoint().getDeduction();
+		taxMaster.getTaxJoint().getIncome();
+		
+//		Double output = taxMaster.getTaxJoint().calNetChargeableIncome();
+		taxMaster.getTaxJoint().calNetChargeableIncome();
+//		System.out.println("Net Chargeable Income: " + output);
+//		output = taxMaster.getTaxJoint().calNetIncome();
+		taxMaster.getTaxJoint().calNetIncome();
+//		System.out.println("Net Income: " + output);
 		
 		Double taxProgressRate = taxMaster.getTaxJoint().calProgressiveRateTax(taxMaster.getTaxGap(), taxMaster.getTaxRate());
 		Double taxStandardRate = taxMaster.getTaxJoint().calStandardRateTax(taxMaster.getStandardRate());
 		taxMaster.getTaxJoint().setTaxProgessRate(taxProgressRate);
 		taxMaster.getTaxJoint().setTaxStandardRate(taxStandardRate);
-		System.out.println("Progress Rate: " + taxMaster.RoundDouble(taxProgressRate,1));
-		System.out.println("Standard Rate: " + taxMaster.RoundDouble(taxStandardRate,1));
+//		System.out.println("Progress Rate: " + taxMaster.RoundDouble(taxProgressRate,1));
+//		System.out.println("Standard Rate: " + taxMaster.RoundDouble(taxStandardRate,1));
 	}
 	
 	public void printSeparateTax() {
-		System.out.println("----- Husband -----");
+//		System.out.println("----- Husband -----");
 		printSeparateHusbandTax();
 		
-		System.out.println("----- Wife -----");
+//		System.out.println("----- Wife -----");
 		printSeparateWifeTax();
 		
 	}
 	
 	public void printSeparateHusbandTax() {
-		System.out.println("Allowances: " + taxMaster.getTaxSeparateHusband().getAllowances());
-		System.out.println("Deduction: " + taxMaster.getTaxSeparateHusband().getDeduction());
-		System.out.println("TotalIncome: " + taxMaster.getTaxSeparateHusband().getIncome());
-		Double output = taxMaster.getTaxSeparateHusband().calNetChargeableIncome();
-		System.out.println("Net Chargeable Income: " + output);
-		output = taxMaster.getTaxSeparateHusband().calNetIncome();
-		System.out.println("Net Income: " + output);
+//		System.out.println("Allowances: " + taxMaster.getTaxSeparateHusband().getAllowances());
+//		System.out.println("Deduction: " + taxMaster.getTaxSeparateHusband().getDeduction());
+//		System.out.println("TotalIncome: " + taxMaster.getTaxSeparateHusband().getIncome());
+		taxMaster.getTaxSeparateHusband().getAllowances();
+		taxMaster.getTaxSeparateHusband().getDeduction();
+		taxMaster.getTaxSeparateHusband().getIncome();
+//		Double output = taxMaster.getTaxSeparateHusband().calNetChargeableIncome();
+//		System.out.println("Net Chargeable Income: " + output);
+		taxMaster.getTaxSeparateHusband().calNetIncome();
+//		output = taxMaster.getTaxSeparateHusband().calNetIncome();
+//		System.out.println("Net Income: " + output);
 		
 		Double taxProgressRate = taxMaster.getTaxSeparateHusband().calProgressiveRateTax(taxMaster.getTaxGap(), taxMaster.getTaxRate());
 		Double taxStandardRate = taxMaster.getTaxSeparateHusband().calStandardRateTax(taxMaster.getStandardRate());
 		taxMaster.getTaxSeparateHusband().setTaxProgessRate(taxProgressRate);
 		taxMaster.getTaxSeparateHusband().setTaxStandardRate(taxStandardRate);
-		System.out.println("Progress Rate: " + taxMaster.RoundDouble(taxProgressRate,1));
-		System.out.println("Standard Rate: " + taxMaster.RoundDouble(taxStandardRate, 1));
+//		System.out.println("Progress Rate: " + taxMaster.RoundDouble(taxProgressRate,1));
+//		System.out.println("Standard Rate: " + taxMaster.RoundDouble(taxStandardRate, 1));
 	}
 	
 	public void printSeparateWifeTax() {
-		System.out.println("Allowances: " + taxMaster.getTaxSeparateWife().getAllowances());
-		System.out.println("Deduction: " + taxMaster.getTaxSeparateWife().getDeduction());
-		System.out.println("TotalIncome: " + taxMaster.getTaxSeparateWife().getIncome());
-		Double output = taxMaster.getTaxSeparateWife().calNetChargeableIncome();
-		System.out.println("Net Chargeable Income: " + output);
-		output = taxMaster.getTaxSeparateWife().calNetIncome();
-		System.out.println("Net Income: " + output);
+//		System.out.println("Allowances: " + taxMaster.getTaxSeparateWife().getAllowances());
+//		System.out.println("Deduction: " + taxMaster.getTaxSeparateWife().getDeduction());
+//		System.out.println("TotalIncome: " + taxMaster.getTaxSeparateWife().getIncome());
+		taxMaster.getTaxSeparateWife().getAllowances();
+		taxMaster.getTaxSeparateWife().getDeduction();
+		taxMaster.getTaxSeparateWife().getIncome();
+//		Double output = taxMaster.getTaxSeparateWife().calNetChargeableIncome();
+		taxMaster.getTaxSeparateWife().calNetChargeableIncome();
+//		System.out.println("Net Chargeable Income: " + output);
+//		output = taxMaster.getTaxSeparateWife().calNetIncome();
+		taxMaster.getTaxSeparateWife().calNetIncome();
+//		System.out.println("Net Income: " + output);
 		
 		Double taxProgressRate = taxMaster.getTaxSeparateWife().calProgressiveRateTax(taxMaster.getTaxGap(), taxMaster.getTaxRate());
 		Double taxStandardRate = taxMaster.getTaxSeparateWife().calStandardRateTax(taxMaster.getStandardRate());
 		taxMaster.getTaxSeparateWife().setTaxProgessRate(taxProgressRate);
 		taxMaster.getTaxSeparateWife().setTaxStandardRate(taxStandardRate);
-		System.out.println("Progress Rate: " + taxMaster.RoundDouble(taxProgressRate ,1));
-		System.out.println("Standard Rate: " + taxMaster.RoundDouble(taxStandardRate, 1));
+		taxMaster.RoundDouble(taxProgressRate ,1);
+		taxMaster.RoundDouble(taxStandardRate, 1);
+//		System.out.println("Progress Rate: " + taxMaster.RoundDouble(taxProgressRate ,1));
+//		System.out.println("Standard Rate: " + taxMaster.RoundDouble(taxStandardRate, 1));
 			}
 	
 	public boolean printRecommendation() {
-		System.out.println("---- recommendation -----");
+//		System.out.println("---- recommendation -----");
 		if (compareTax()) {
-			System.out.println("Recommend using Joint assessment");
+//			System.out.println("Recommend using Joint assessment");
 			taxMaster.setRecommendation("Recommend using Joint assessment");
 			return true;
 		} else {
-			System.out.println("Not recommend using Joint assessment");
+//			System.out.println("Not recommend using Joint assessment");
 			taxMaster.setRecommendation("Not recommend using Joint assessment");
 			return false;
 		}

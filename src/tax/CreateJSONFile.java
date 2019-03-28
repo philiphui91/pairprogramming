@@ -1,6 +1,5 @@
 package tax;
 
-//import org.json.JSONArray;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -14,11 +13,11 @@ import tax.setting.YearOfAssessment;
 
 public class CreateJSONFile {
 
-	public CreateJSONFile (List<Tax> _taxList) {
+	public CreateJSONFile (List<Tax> _taxList, String _inputFileName) {
 
 		JSONObject obj = new JSONObject();
 		
-		String fileName = new SimpleDateFormat("'myJSON_'yyyyMMddHHmmss'.json'").format(new Date());
+		String fileName = new SimpleDateFormat("'myJSON_'yyyyMMddHHmmss_'"+ _inputFileName+ "'").format(new Date());
 		try(FileWriter file = new FileWriter(ValueSetting.outFolderPath + fileName))
 		{
 			boolean firstLine = true;
@@ -36,9 +35,9 @@ public class CreateJSONFile {
 				obj.put("5_joint_tax_payable", _tax.RoundDouble(_tax.getTaxJoint().calTaxPayable(), 0));
 				obj.put("6_separate_husband_tax_payable", _tax.RoundDouble(_tax.getTaxSeparateHusband().calTaxPayable(), 0));
 				obj.put("7_separate_wife_tax_payable", _tax.RoundDouble(_tax.getTaxSeparateWife().calTaxPayable(), 0));
-				obj.put("8_sep_husband_75percent_tax_payable", _tax.RoundDouble(Deduction75percent(_tax.getTaxSeparateHusband().calTaxPayable(), _tax.getYear()), 0));
-				obj.put("9_sep_wife_75percent_tax_payable", _tax.RoundDouble(Deduction75percent(_tax.getTaxSeparateWife().calTaxPayable(), _tax.getYear()), 0));
-				obj.put("10_recommendation", _tax.getRecommendation());
+				obj.put("8_recommendation", _tax.getRecommendation());
+//				obj.put("9_sep_husband_75percent_tax_payable", _tax.RoundDouble(Deduction75percent(_tax.getTaxSeparateHusband().calTaxPayable(), _tax.getYear()), 0));
+//				obj.put("10_sep_wife_75percent_tax_payable", _tax.RoundDouble(Deduction75percent(_tax.getTaxSeparateWife().calTaxPayable(), _tax.getYear()), 0));
 				file.write(obj.toString());
 			}
 			file.write("]");

@@ -1,11 +1,16 @@
 package tax;
 
 import tax.setting.ValueSetting;
-import tax.test.TestMethod;
+import tax.test.TestRunner;
 
 // For Tester Use
 public interface Readme {
-
+	/*
+	 * package: tax.setting
+	 * Test Starting Point
+	 */
+	TestRunner t = new TestRunner();
+	
 	/* 
 	 * Common Value such as ID, Tax Period (YearOfAssessment), Tax Gap, Tax Rate, Standard Rate, MPF MaxDeduction, MPF MinIncome, Allowances, Recommendation 
 	 */
@@ -94,9 +99,4 @@ public interface Readme {
 	 */
 	InOutJSonFile inOutJSonFile = null;
 	
-	/*
-	 * package: tax.test
-	 * Test Starting Point (Test: Test20190322)
-	 */
-	TestMethod t = new TestMethod();
 }
