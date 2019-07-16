@@ -6,86 +6,84 @@ import tax.setting.YearOfAssessment;
 
 public class TaxDao {
 	
-	private Double income;
+	private double income;
 	
-	private Double deduction;
+	private double deduction;
 	
-	private Double allowances;
+	private double allowances;
 	
-	private Double taxStandardRate;
+	private double taxStandardRate;
 	
-	private Double taxProgressRate;
+	private double taxProgressRate;
 	
-	private Double taxPayable;
+	private double taxPayable;
 	
-	private Double mpfDeduction;
+	private double mpfDeduction;
 
-	public Double getIncome() {
+	public double getIncome() {
 		return income;
 	}
 
-	public void setIncome(Double income) {
+	public void setIncome(double income) {
 		this.income = income;
 	}
 
-	public Double getDeduction() {
+	public double getDeduction() {
 		return deduction;
 	}
 
-	public void setDeduction(Double deduction) {
+	public void setDeduction(double deduction) {
 		this.deduction = deduction;
 	}
 
-	public Double getAllowances() {
-		if (allowances == null)
-			allowances = 0.0;
+	public double getAllowances() {
 		return allowances;
 	}
 
-	public void setAllowances(Double allowances) {
+	public void setAllowances(double allowances) {
 		this.allowances = allowances;
 	}
 	
 
-	public Double getTaxStandardRate() {
+	public double getTaxStandardRate() {
 		return taxStandardRate;
 	}
 
-	public void setTaxStandardRate(Double taxStandardRate) {
+	public void setTaxStandardRate(double taxStandardRate) {
 		this.taxStandardRate = taxStandardRate;
 	}
 
-	public Double getTaxProgressRate() {
+	public double getTaxProgressRate() {
 		return taxProgressRate;
 	}
 
-	public void setTaxProgessRate(Double taxProgressRate) {
+	public void setTaxProgessRate(double taxProgressRate) {
 		this.taxProgressRate = taxProgressRate;
 	}
 
-	public Double getTaxPayable() {
+	public double getTaxPayable() {
 		return taxPayable;
 	}
 
-	public void setTaxPayable(Double taxPayable) {
+	public void setTaxPayable(double taxPayable) {
 		this.taxPayable = taxPayable;
 	}
 
 
 
-	public Double getMpfDeduction() {
+	public double getMpfDeduction() {
 		return mpfDeduction;
 	}
 
-	public void setMpfDeduction(Double mpfDeduction) {
+	public void setMpfDeduction(double mpfDeduction) {
 		this.mpfDeduction = mpfDeduction;
 	}
 
-	public Double calNetChargeableIncome() {
-		Double netChargeableIncome;
-		Double _totalIncome = CheckNull(getIncome());
-		Double _deductions = CheckNull(getDeduction());
-		Double _allowances = CheckNull(getAllowances());
+	public double calNetChargeableIncome() {
+		double netChargeableIncome;
+		double _totalIncome = getIncome();
+		double _deductions = getDeduction();
+		double _allowances = getAllowances();
 		
 		netChargeableIncome = _totalIncome - _deductions - _allowances;
 		if (netChargeableIncome < 0.0) {
@@ -94,10 +92,10 @@ public class TaxDao {
 		return netChargeableIncome;
 	}
 	
-	public Double calNetIncome() {
-		Double netIncome;
-		Double _totalIncome = CheckNull(getIncome());
-		Double _deductions = CheckNull(getDeduction());
+	public double calNetIncome() {
+		double netIncome;
+		double _totalIncome = getIncome();
+		double _deductions = getDeduction();
 		
 		netIncome = _totalIncome - _deductions;
 		if (netIncome < 0) 
@@ -105,9 +103,9 @@ public class TaxDao {
 		return netIncome;
 	}
 	
-	public Double calProgressiveRateTax(Double taxGap, Double[] taxRate) {
-		Double n = calNetChargeableIncome(); //netChargeableIncome
-		Double tax = 0.0;
+	public double calProgressiveRateTax(Double taxGap, Double[] taxRate) {
+		double n = calNetChargeableIncome(); //netChargeableIncome
+		double tax = 0.0;
 		
 		int period = 0;
 		while (n > 0.0 && period < taxRate.length) {
@@ -122,12 +120,12 @@ public class TaxDao {
 		return tax;
 	}
 		
-	public Double calStandardRateTax(Double standardRate) {
+	public double calStandardRateTax(double standardRate) {
 		Double n = calNetIncome();
 		return n * standardRate;
 	}
 	
-	public Double calTaxPayable() {
+	public double calTaxPayable() {
 		if (taxStandardRate > taxProgressRate) {
 			setTaxPayable(taxProgressRate);
 			return taxProgressRate;
@@ -137,13 +135,13 @@ public class TaxDao {
 		}
 	}
 	
-	public Double calMPFDeduction(Map<YearOfAssessment, Double> maxDeductionMap, YearOfAssessment year){
-		Double _income = CheckNull(getIncome());
-		Double mpfDeduction = _income * 0.05;
+	public double calMPFDeduction(Map<YearOfAssessment, Double> maxDeductionMap, YearOfAssessment year){
+		double _income = getIncome();
+		double mpfDeduction = _income * 0.05;
 		
 //		System.out.println("MPF Deduction Start");
-		Double mpfMaxDeduction = maxDeductionMap.get(year);
-		if (mpfMaxDeduction == null) {
+		double mpfMaxDeduction = maxDeductionMap.get(year);
+		if (mpfMaxDeduction == 0.0) {
 			try {
 				throw new Exception("Year of Assessment out of range");
 			} catch (Exception e) {
@@ -159,7 +157,7 @@ public class TaxDao {
 			mpfDeduction = 0.0;
 		}
 		
-		if (getDeduction() == null) 
+		if (getDeduction() == 0.0) 
 			setDeduction(0.0);
 		
 		setMpfDeduction(mpfDeduction);
@@ -167,16 +165,4 @@ public class TaxDao {
 		return mpfDeduction;
 	}
 	
-	public Double CheckNull(Double d) {
-		if (d == null) {
-			d = 0.0;
-		}
-		
-		if (d < 0) {
-			d = 0.0;
-		}
-		
-		return d;
-	}
-
 }
